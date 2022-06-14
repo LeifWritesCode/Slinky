@@ -101,7 +101,7 @@ export default class App extends Component {
             body: JSON.stringify(body),
         };
 
-        fetch('shortlink', options)
+        fetch('/api/v1/shortlink', options)
             .then(response => {
                 if (!response.ok) {
                     return response.json()

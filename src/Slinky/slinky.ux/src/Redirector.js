@@ -24,7 +24,7 @@ class Redirector extends Component {
             body: JSON.stringify({}),
         };
 
-        fetch(`shortlink/${id}`, options)
+        fetch(`/api/v1/shortlink/${id}`, options)
             .then(response => {
                 if (!response.ok) {
                     this.setState({ success: false });
