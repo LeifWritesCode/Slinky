@@ -1,1 +1,4 @@
 
+[submodule "src/SlinkyApiServer/Snowflake.Core"]
+	path = src/SlinkyApiServer/Snowflake.Core
+	url = https://github.com/lwgsystems/Snowflake.Core
