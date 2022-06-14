@@ -1,45 +1,33 @@
 version: '3'
 
 services:
+
   slinky:
     build:
-      context: ../src/slinky
-      dockerfile: ./dockerfile
-    image: 'lwg/slink:latest'
+      context: ../src/
+    image: 'lwg/slinky:latest'
     hostname: 'slinkyapi_node1'
     restart: always
     volumes:
       - ../config/slinky.node1.conf:/app/appsettings.json:ro
     expose:
       - 5000
-    depends_on:
-      - redis
     networks:
       - slinkynet
-  redis:
-    image: 'redis:7.0.0-alpine3.15'
-    hostname: 'redis'
-    restart: always
-    volumes:
-      - ../volumes/redis:/var/lib/redis:rw
-      - ../config/redis.conf:/etc/redis/redis.conf:ro
-    expose:
-      - 6379
-    networks:
-      - slinkynet
+ 
   nginx:
     image: 'nginx:1.21.6-alpine'
     hostname: 'nginx'
     restart: always
     volumes:
       - ../config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../src/slinky/slinky.ux/build/:/usr/share/nginx/html/slinky/:ro
     ports:
       - 443:443
     depends_on:
       - slinky
     networks:
       - slinkynet
-
 networks:
   slinkynet:
     driver: bridge
