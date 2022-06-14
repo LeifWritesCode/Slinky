@@ -43,7 +43,7 @@ namespace Slinky.Data.EntityFrameworkCore
             {
                 AuditEvent = auditEvent,
                 DateTime = DateTime.UtcNow,
-                Shortlink = shortlink
+                ShortLinkId = shortlink.Id
             };
 
             await shortlinkContextBase.Audits.AddAsync(audit);

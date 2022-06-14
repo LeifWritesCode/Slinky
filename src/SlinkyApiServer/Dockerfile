@@ -1,12 +1,12 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build-env
 WORKDIR /app
 
 # Copy the project and build
 COPY . ./
-RUN dotnet publish -c Release -o out ./Slinky/Slinky.sln
+RUN dotnet publish -c Release -o out Slinky.sln
 
 # Pull asp.net core runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 WORKDIR /app
 
 # Copy in build output

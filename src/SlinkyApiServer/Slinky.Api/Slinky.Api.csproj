@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Snowflake.Core\Snowflake.Core\Snowflake.Core.csproj" />
     <ProjectReference Include="..\Slinky.Data.EntityFrameworkCore\Slinky.Data.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Slinky.Data\Slinky.Data.csproj" />
+    <ProjectReference Include="..\Snowflake.Core\Snowflake.Core\Snowflake.Core.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/bitrise.json" /></VisualStudio></ProjectExtensions>

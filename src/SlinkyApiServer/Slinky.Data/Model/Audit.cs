@@ -16,13 +16,11 @@ namespace Slinky.Data.Model
         [Required]
         public AuditEvent AuditEvent { get; set; }
 
-        [ForeignKey(nameof(User))]
         [Required]
         public int UserId { get; set; }
 
         public User User { get; set; }
 
-        [ForeignKey(nameof(Shortlink))]
         [Required]
         public string ShortLinkId { get; set; }
 

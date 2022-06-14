@@ -44,7 +44,7 @@ export default class App extends Component {
         return (
             <Alert key="success" variant="success" size="lg">
                 <div className="d-flex justify-content-end">
-                    <p className="flex-fill mb-0 align-self-center">Congratulations! Your fancy new shortlink is: <a href="{this.state.lastShortlink}"><strong>{this.state.lastShortlink}</strong></a></p>
+                    <p className="flex-fill mb-0 align-self-center">Congratulations! Your fancy new shortlink is: <a href={this.state.lastShortlink}><strong>{this.state.lastShortlink}</strong></a></p>
                     <Button className="ms-1" variant="outline-success" onClick={this.reset}>shorten again</Button>
                 </div>
             </Alert>

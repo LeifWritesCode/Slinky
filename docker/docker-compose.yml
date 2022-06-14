@@ -1,15 +1,25 @@
 version: '3'
 
 services:
+  slinkyfrontend:
+    build:
+      context: ../src/SlinkyFrontEnd
+    image: 'lwg/slinkyux:dev'
+    hostname: 'slinkyfrontend'
+    restart: always
+    expose:
+      - 3000
+    networks:
+      - slinkynet
 
   slinky:
     build:
-      context: ../src/
-    image: 'lwg/slinky:latest'
+      context: ../src/SlinkyApiServer
+    image: 'lwg/slinky:dev'
     hostname: 'slinkyapi_node1'
     restart: always
     volumes:
-      - ../config/slinky.node1.conf:/app/appsettings.json:ro
+      - ../config/slinky.conf:/app/appsettings.json:ro
     expose:
       - 5000
     networks:
@@ -21,13 +31,15 @@ services:
     restart: always
     volumes:
       - ../config/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ../src/slinky/slinky.ux/build/:/usr/share/nginx/html/slinky/:ro
     ports:
+      - 80:80
       - 443:443
     depends_on:
       - slinky
+      - slinkyfrontend
     networks:
       - slinkynet
+
 networks:
   slinkynet:
     driver: bridge
